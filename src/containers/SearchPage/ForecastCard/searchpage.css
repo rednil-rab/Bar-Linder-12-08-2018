@@ -21,3 +21,31 @@
     right: 50vw;
     height: 50vh;
 }
+
+@media only screen and (max-width: 768px) {
+    .containerCard {
+        display: grid;
+        flex-direction: column;
+    }
+    .currentCard {
+        right: 0;
+        position: relative;
+        grid-area: b;
+    }
+    .MuiTypography-h3 {
+        font-size: 9vw !important;
+    }
+    .MuiCardActions-spacing {
+        position: absolute;
+    }
+    .srchMap {
+        grid-area: a;
+        left: 0;
+        right: 50vw;
+        height: 50vh !important;
+    }
+    .cardContainer{
+        flex-direction: column;
+        margin-top: -35vw;
+    }
+  }

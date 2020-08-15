@@ -12,6 +12,9 @@ import { useDispatch } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import * as actionType from '../store/action.js'
 import * as utils from '../utils';
+import Switch from '@material-ui/core/Switch';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,14 +31,23 @@ const useStyles = makeStyles((theme) => ({
  function ButtonAppBar() {
   const classes = useStyles();
   const celsius = useSelector(state => state.srch.celsius);
+  const [state, setState] = React.useState({
+    checkedA: true,
+    checkedB: true,
+  });
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+    dispatch({ type: actionType.TOGGLE_DEGREE })
+  };
   const dispatch = useDispatch()
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Button onClick={() => dispatch({ type: actionType.TOGGLE_DEGREE })}>
-            Toggle {(!celsius) ? 'Celsius' : 'Fahrenheit'}
-          </Button>
+        <FormControlLabel
+        control={<Switch checked={state.checkedA} onChange={handleChange} name="checkedA" />}
+        label="Toggle Unit"
+      />
           <Typography variant="h6" className={classes.title}>
             Assignment
           </Typography>

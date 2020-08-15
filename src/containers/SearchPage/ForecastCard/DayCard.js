@@ -41,7 +41,7 @@ export default function OutlinedCard(props) {
 
       <CardContent>
       <Typography variant="h4" component="h2">
-         {utils.weekDayConvertor[weekDay]}
+         {utils.weekDayConvertor[weekDay]} temp
         </Typography>
       <Typography variant="h5" component="h2">
          {props.temp} {props.unit === 'C' ? 'C' : 'F'}

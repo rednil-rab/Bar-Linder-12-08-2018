@@ -2,7 +2,7 @@ import * as actionTypes from '../action';
 import axios from 'axios';
 
 const initialState = {
-    city: {},
+    city: '',
     current: null,
     forecastArray: null,
     celsius: false,
@@ -38,7 +38,6 @@ const reducer =  (state = initialState, action) => {
             current: action.value
         }
         case actionTypes.UPDATE_FAVORITES :
-            debugger;
             const temp = state.tempFav;
             const oldFavorite = state.favorites;
             const newoldoldFavorite = oldFavorite.concat(temp);
@@ -49,12 +48,18 @@ const reducer =  (state = initialState, action) => {
 
         }
         case actionTypes.ADD_TEMP_OBJ :
-            debugger;
             return {
                 ...state,
                 tempFav: action.value
     
             }
+            case actionTypes.DELETE_FAVORITE:
+                const updatedArray = state.favorites.filter(favorites => favorites.id !== action.resElId);
+                localStorage.setItem('HeroloFavorites', JSON.stringify(updatedArray));
+                return {
+                    ...state,
+                    favorites: updatedArray
+                }
        
     }
 

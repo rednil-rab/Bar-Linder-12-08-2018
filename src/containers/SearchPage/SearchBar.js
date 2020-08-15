@@ -36,7 +36,7 @@ class SearchBar extends Component {
       return;
     }
     const locationKey = result[0].Key;
-    debugger;
+
     this.setState({
       tempParts: {
         name: result[0].LocalizedName,
@@ -74,7 +74,7 @@ class SearchBar extends Component {
                 lat: this.props.lat,
                 lng: this.props.lan
             }
-            debugger;
+
             this.props.addTempObj(temp);
             },
             error => {

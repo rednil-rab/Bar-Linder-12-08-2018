@@ -35,7 +35,7 @@ class OutlinedCard extends Component {
         </CardActions>
         <Geolocation></Geolocation>
         <Current></Current>
-        <CardContent style={{ display: 'flex', gridArea: 'c' }}>
+        <CardContent className="cardContainer" style={{ display: 'flex', gridArea: 'c' }}>
           {cards}
         </CardContent>
         <CardActions>

@@ -6,3 +6,4 @@ export const SET_COOR = 'SET_COOR';
 export const SET_CURRENT = 'SET_CURRENT';
 export const UPDATE_FAVORITES = 'UPDATE_FAVORITES';
 export const ADD_TEMP_OBJ = 'ADD_TEMP_OBJ';
+export const DELETE_FAVORITE = 'DELETE_FAVORITE';

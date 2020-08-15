@@ -1,6 +1,13 @@
 .favContainer {
     display: grid;
-    grid-template-columns: auto auto auto;
-    padding: 10px;
-
+    grid-template-columns: auto auto auto auto;
 }
+
+
+@media only screen and (max-width: 768px) {
+    .favContainer {
+        display: grid;
+        grid-template-columns:  auto auto;
+    }
+    
+  }

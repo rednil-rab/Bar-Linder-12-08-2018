@@ -4,6 +4,8 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import * as utils from '../../utils';
 import { useSelector } from 'react-redux';
@@ -41,13 +43,20 @@ export default function OutlinedCard(props) {
   const weekDay = new Date(props.weekday).getDay();
 
   const getCurrentWeather = async (props) => {
-    debugger;
     const response = await axios.get(`${utils.ACCU_WEATHER_HOST}/currentconditions/v1/${props.locationKey}?apikey=${utils.API_KEY}&language=en&details=true`);
-    setWeatherObj(response.data);
+    setWeatherObj(response.data[0]);
   }
-  // getCurrentWeather(props);
+  if (weatherObj ===  null) {
+    getCurrentWeather(props)
+  }
+
   return (
     <Card id={props.id} className={classes.root} className="favCard" variant="outlined">
+                  <CardActions>
+                <IconButton onClick={() => dispatch({ type: actionType.DELETE_FAVORITE , resElId: props.id})} edge="start" className={classes.menuButton} color="red" aria-label="menu">
+                    <HighlightOffIcon  />
+                </IconButton>
+            </CardActions>
       <CardContent>
       <Typography variant="h4" component="h2">
         {props.name}
@@ -55,8 +64,8 @@ export default function OutlinedCard(props) {
       <Typography variant="h5" component="h2">
       {weatherObj != null ? weatherObj.WeatherText : ''}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-        
+        <Typography variant="h5" color="textSecondary">
+        {weatherObj != null ? (celsius) ? `${weatherObj.ApparentTemperature.Metric.Value} C` : `${weatherObj.ApparentTemperature.Imperial.Value} F` : ''}
         </Typography>
       </CardContent>
     </Card>

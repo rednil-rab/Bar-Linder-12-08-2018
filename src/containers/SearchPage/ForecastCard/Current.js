@@ -34,42 +34,51 @@ const useStyles = makeStyles({
 
 
 export default function OutlinedCard(props) {
-    const [checked,setChecked] = useState(false);
+    const [checked, setChecked] = useState(null);
     const favorites = useSelector(state => state.srch.favorites);
     const celsius = useSelector(state => state.srch.celsius);
     const currentTemp = useSelector(state => state.srch.current);
     const currentCity = useSelector(state => state.srch.city);
     const dispatch = useDispatch()
     const classes = useStyles();
-    const weekDay = new Date(props.weekday).getDay();
 
-    // favorites.map(fav => {
-    //     if(fav.name === currentCity) {
-    //         setChecked(true)
-    //     } else {
-    //         setChecked(false)
-    //     }
 
-    // })
 
     return (
         <Card className='currentCard' variant="outlined">
             <CardActions>
-                <IconButton edge="start" className={classes.menuButton} color="red" style={checked ? { color: 'red' } : { color: 'grey' }} aria-label="menu">
+                <IconButton edge="start" className={classes.menuButton} color="red" style={{ color: 'red' }} aria-label="menu">
                     <FavoriteIcon onClick={() => dispatch({ type: actionType.UPDATE_FAVORITES })} />
                 </IconButton>
             </CardActions>
             <CardContent>
-                {(currentTemp === null) ? '' :
+                {(currentTemp === null) ? <div>
+                    <Typography variant="h3" component="h2">
+                         temp
+                        </Typography>
+                    <Typography variant="h4" component="h2">
+                        
+                            temp
+                        </Typography>
+                    <Typography variant="h5" component="h2">
+                      
+                            temp
+                        </Typography>
+                    <Typography className={classes.pos} color="textSecondary">
+
+                    </Typography>
+                </div> :
                     <div>
                         <Typography variant="h3" component="h2">
-                            {currentCity}
+                            {currentCity} temp
                         </Typography>
                         <Typography variant="h4" component="h2">
-                            {celsius ? `${currentTemp.Temperature.Metric.Value} C` : `${currentTemp.Temperature.Metric.Value} F`}
+                            {celsius ? `${currentTemp.Temperature.Metric.Value} C` : `${currentTemp.Temperature.Imperial.Value} F`}
+                            temp
                         </Typography>
                         <Typography variant="h5" component="h2">
                             {currentTemp.WeatherText}
+                            temp
                         </Typography>
                         <Typography className={classes.pos} color="textSecondary">
 
