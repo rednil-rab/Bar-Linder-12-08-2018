@@ -1,0 +1,23 @@
+.containerCard{
+    display: grid;
+    grid-template-areas: "a a b b"
+    "a a b b"
+    "c c c c"                        
+    ;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50vh;
+}
+
+.currentCard {
+    right: 0;
+    width: 50vw;
+    height: 50%;
+    position: absolute;
+    grid-area: b;
+}
+.srchMap {
+    grid-area: a;
+    left: 0;
+    right: 50vw;
+    height: 50vh;
+}
