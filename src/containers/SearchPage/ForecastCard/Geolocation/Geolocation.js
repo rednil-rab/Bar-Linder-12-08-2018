@@ -17,7 +17,7 @@ const mapStyles = {
 export class MapContainer extends Component {
     state = {
         valve: false,
-        
+
     }
     location = {
         getPosition: () => {
@@ -47,33 +47,33 @@ export class MapContainer extends Component {
                     valve: true
                 })
                 Geocode.fromLatLng(position.coords.latitude, position.coords.longitude).then(
-                   async response  => {
-                      const address = response.results[0].formatted_address;
-                      const result = encodeURIComponent(address.split(',')[1].trim());
-                      const address2 = address.split(',')[1];
-                      this.props.setCity(address2);
-                      const responseCity = await axios.get(`${utils.ACCU_WEATHER_HOST}/locations/v1/cities/search?apikey=${utils.API_KEY}&q=${result}&language=en&details=true`);
-                      console.log(responseCity.data[0]);
-                      const locationKey = responseCity.data[0].Key
-                      const responseCurrent = await axios.get(`${utils.ACCU_WEATHER_HOST}/currentconditions/v1/${locationKey}?apikey=${utils.API_KEY}&language=en&details=true`);
-                      this.props.setCurrent(responseCurrent.data[0]);
-                      const responseForecast = await axios.get(`${utils.ACCU_WEATHER_HOST}/forecasts/v1/daily/5day/${locationKey}?apikey=${utils.API_KEY}&language=en&details=true&metric=true`);
-                      this.props.setForecast(responseForecast.data);
-                      const temp = {
-                          id: utils.ID(),
-                          name: address2,
-                          locationKey: locationKey,
-                          lat: position.coords.latitude,
-                          lng: position.coords.longitude
-                      }
-                      this.props.addTempObj(temp);
+                    async response => {
+                        const address = response.results[0].formatted_address;
+                        const result = encodeURIComponent(address.split(',')[1].trim());
+                        const address2 = address.split(',')[1];
+                        this.props.setCity(address2);
+                        const responseCity = await axios.get(`${utils.ACCU_WEATHER_HOST}/locations/v1/cities/search?apikey=${utils.API_KEY}&q=${result}&language=en&details=true`);
+                        console.log(responseCity.data[0]);
+                        const locationKey = responseCity.data[0].Key
+                        const responseCurrent = await axios.get(`${utils.ACCU_WEATHER_HOST}/currentconditions/v1/${locationKey}?apikey=${utils.API_KEY}&language=en&details=true`);
+                        this.props.setCurrent(responseCurrent.data[0]);
+                        const responseForecast = await axios.get(`${utils.ACCU_WEATHER_HOST}/forecasts/v1/daily/5day/${locationKey}?apikey=${utils.API_KEY}&language=en&details=true&metric=true`);
+                        this.props.setForecast(responseForecast.data);
+                        const temp = {
+                            id: utils.ID(),
+                            name: address2,
+                            locationKey: locationKey,
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        }
+                        this.props.addTempObj(temp);
                     },
                     error => {
-                      console.error(error);
+                        console.error(error);
                     }
-                  );
-                this.props.setCoor(position.coords.latitude,position.coords.longitude);
-                
+                );
+                this.props.setCoor(position.coords.latitude, position.coords.longitude);
+
             }
 
         }
@@ -95,7 +95,7 @@ export class MapContainer extends Component {
             }}
 
         />
-        ;
+            ;
         return (
             map
         );
@@ -106,23 +106,23 @@ export class MapContainer extends Component {
 
 const mapstateToProps = state => {
     return {
-      lat: state.location.lat,
-      lan: state.location.lan
-  
+        lat: state.location.lat,
+        lan: state.location.lan
+
     };
-  }
-  
-  const mapDispatchToProps = dispatch => {
+}
+
+const mapDispatchToProps = dispatch => {
     return {
         setCity: (city) => dispatch({ type: actionType.SET_CITY, value: city }),
         setForecast: (obj) => dispatch({ type: actionType.SET_FORECAST, value: obj }),
-        setCoor: (lat,lan) => dispatch({type: actionType.SET_COOR, lat: lat, lan: lan}),
-        setCurrent: (obj) => dispatch({type: actionType.SET_CURRENT, value: obj}),
-        addTempObj: (obj) => dispatch({type: actionType.ADD_TEMP_OBJ, value: obj})
-  
+        setCoor: (lat, lan) => dispatch({ type: actionType.SET_COOR, lat: lat, lan: lan }),
+        setCurrent: (obj) => dispatch({ type: actionType.SET_CURRENT, value: obj }),
+        addTempObj: (obj) => dispatch({ type: actionType.ADD_TEMP_OBJ, value: obj })
+
     }
-  }
-  
-  export default connect(mapstateToProps, mapDispatchToProps)(GoogleApiWrapper({
+}
+
+export default connect(mapstateToProps, mapDispatchToProps)(GoogleApiWrapper({
     apiKey: 'AIzaSyDI_cZNKbdlEDqkcwzQysW24VMkcIv50NI'
 })(MapContainer))

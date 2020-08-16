@@ -13,8 +13,8 @@ class SearchPage extends Component {
         flexDirection: 'row'
     }
     render() {
-        return(
-<Card style={this.style}></Card>
+        return (
+            <Card style={this.style}></Card>
         )
     }
 }

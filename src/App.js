@@ -4,11 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import Navbar from './containers/Navbar'
 import SearchPage from './containers/SearchPage/SearchPage'
 import Favorites from './containers/Favorites/Favorites'
-import axios from 'axios'
 import './App.css';
 
 
- 
+
 class App extends Component {
   state = {
 
@@ -21,18 +20,18 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-      <div className="App">
-        {/* <nav>
+        <div className="App">
+          {/* <nav>
           <ul>
             <li><a href="/new-search">Weather</a></li>
             <li><a href="/favortites">Favorites</a></li>
           </ul>
         </nav> */}
-        <Navbar></Navbar>
-        <Favorites></Favorites>
-        <SearchPage></SearchPage>
-        {/* <Geolocation></Geolocation> */}
-      </div>
+          <Navbar></Navbar>
+          <Favorites></Favorites>
+          <SearchPage></SearchPage>
+          {/* <Geolocation></Geolocation> */}
+        </div>
       </BrowserRouter>
 
     )

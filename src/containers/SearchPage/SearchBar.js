@@ -24,13 +24,13 @@ class SearchBar extends Component {
       .then(res => res.json())
       .then((data) => {
         console.log(data);
-        this.setState({countries: data})
+        this.setState({ countries: data })
       })
       .catch(console.log)
-    },
-  500, false)
-    
-  citySelect  = async (string) => {
+  },
+    500, false)
+
+  citySelect = async (string) => {
     const result = this.state.countries.filter(country => country.LocalizedName === string);
     if (result[0] === undefined) {
       return;
@@ -49,7 +49,7 @@ class SearchBar extends Component {
     const response2 = await axios.get(`${utils.ACCU_WEATHER_HOST}/forecasts/v1/daily/5day/${result[0].Key}?apikey=${utils.API_KEY}&language=en&details=true&metric=true`);
     this.props.setForecast(response2.data);
 
-  
+
   }
   render() {
     return (
@@ -58,7 +58,7 @@ class SearchBar extends Component {
           console.log(e.target.value);
           this.setState({ query: e.target.value });
           this.componentDidMount();
-          
+
         }}
         onChange={(e) => {
           console.log(e.target.value);
@@ -73,9 +73,9 @@ class SearchBar extends Component {
                 locationKey: this.state.tempParts.key,
                 lat: this.props.lat,
                 lng: this.props.lan
-            }
+              }
 
-            this.props.addTempObj(temp);
+              this.props.addTempObj(temp);
             },
             error => {
               console.error(error);
@@ -85,11 +85,13 @@ class SearchBar extends Component {
         id="combo-box-demo"
         options={this.state.countries}
         getOptionLabel={(option) => option.LocalizedName}
-        style={{width: '300px',
+        style={{
+          width: '300px',
           position: 'relative',
           right: 0,
           left: 0,
-          margin: '0 auto' }}
+          margin: '0 auto'
+        }}
         renderInput={(params) => <TextField  {...params} label="" variant="outlined" />}
       />
     );
@@ -109,9 +111,9 @@ const mapDispatchToProps = dispatch => {
   return {
     setCity: (city) => dispatch({ type: actionType.SET_CITY, value: city }),
     setForecast: (obj) => dispatch({ type: actionType.SET_FORECAST, value: obj }),
-    setCoor: (lat,lan) => dispatch({type: actionType.SET_COOR, lat: lat, lan: lan}),
-    setCurrent: (obj) => dispatch({type: actionType.SET_CURRENT, value: obj}),
-    addTempObj: (obj) => dispatch({type: actionType.ADD_TEMP_OBJ, value: obj})
+    setCoor: (lat, lan) => dispatch({ type: actionType.SET_COOR, lat: lat, lan: lan }),
+    setCurrent: (obj) => dispatch({ type: actionType.SET_CURRENT, value: obj }),
+    addTempObj: (obj) => dispatch({ type: actionType.ADD_TEMP_OBJ, value: obj })
   }
 }
 

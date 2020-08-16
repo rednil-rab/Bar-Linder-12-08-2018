@@ -9,11 +9,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import { connect } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux'
-import Button from '@material-ui/core/Button';
 import * as actionType from '../store/action.js'
-import * as utils from '../utils';
 import Switch from '@material-ui/core/Switch';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles((theme) => ({
@@ -28,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
- function ButtonAppBar() {
+function ButtonAppBar() {
   const classes = useStyles();
   const celsius = useSelector(state => state.srch.celsius);
   const [state, setState] = React.useState({
@@ -44,17 +41,17 @@ const useStyles = makeStyles((theme) => ({
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-        <FormControlLabel
-        control={<Switch checked={state.checkedA} onChange={handleChange} name="checkedA" />}
-        label="Toggle Unit"
-      />
+          <FormControlLabel
+            control={<Switch checked={state.checkedA} onChange={handleChange} name="checkedA" />}
+            label="Toggle Unit"
+          />
           <Typography variant="h6" className={classes.title}>
             Assignment
           </Typography>
           <IconButton href="/new-search" edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <CloudIcon />
           </IconButton>
-          <IconButton href="/favorites"edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton href="/favorites" edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <FavoriteIcon />
           </IconButton>
         </Toolbar>

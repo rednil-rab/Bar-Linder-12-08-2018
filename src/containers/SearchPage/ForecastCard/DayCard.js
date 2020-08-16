@@ -40,11 +40,11 @@ export default function OutlinedCard(props) {
     <Card className={classes.root} variant="outlined">
 
       <CardContent>
-      <Typography variant="h4" component="h2">
-         {utils.weekDayConvertor[weekDay]} temp
+        <Typography variant="h4" component="h2">
+          {utils.weekDayConvertor[weekDay]} temp
         </Typography>
-      <Typography variant="h5" component="h2">
-         {props.temp} {props.unit === 'C' ? 'C' : 'F'}
+        <Typography variant="h5" component="h2">
+          {props.temp} {props.unit === 'C' ? 'C' : 'F'}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
           {props.forecast.replace('w/', 'with')}

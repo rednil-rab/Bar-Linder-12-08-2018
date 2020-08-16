@@ -10,12 +10,12 @@ class SearchPage extends Component {
         APIkey: 'GU2OTPQUz1mECqPOZOVdshtwt64h4pD5'
     }
     render() {
-        return(
+        return (
             <div>
-               <Route exec path="/new-search" >
-                   <SearchBar></SearchBar>
-                   <ForeCastCard></ForeCastCard>
-                </Route> 
+                <Route exec path="/new-search" >
+                    <SearchBar></SearchBar>
+                    <ForeCastCard></ForeCastCard>
+                </Route>
             </div>
         )
     }
