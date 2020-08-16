@@ -1,5 +1,5 @@
 export const ACCU_WEATHER_HOST = 'https://dataservice.accuweather.com';
-export const API_KEY = 'GU2OTPQUz1mECqPOZOVdshtwt64h4pD5';
+export const API_KEY = 'ALY2AtsDuGp5HjSxZkHRZsfOiWmAtVco';
 export const weekDayConvertor = new Array(7);
 weekDayConvertor[0] = "Sunday";
 weekDayConvertor[1] = "Monday";
