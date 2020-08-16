@@ -55,15 +55,14 @@ export default function OutlinedCard(props) {
                 {(currentTemp === null) ? '' :
                     <div>
                         <Typography variant="h3" component="h2">
-                            {currentCity} temp
+                            {currentCity} 
                         </Typography>
                         <Typography variant="h4" component="h2">
                             {celsius ? `${currentTemp.Temperature.Metric.Value} C` : `${currentTemp.Temperature.Imperial.Value} F`}
-                            temp
+
                         </Typography>
                         <Typography variant="h5" component="h2">
                             {currentTemp.WeatherText}
-                            temp
                         </Typography>
                         <Typography className={classes.pos} color="textSecondary">
 
