@@ -52,22 +52,7 @@ export default function OutlinedCard(props) {
                 </IconButton>
             </CardActions>
             <CardContent>
-                {(currentTemp === null) ? <div>
-                    <Typography variant="h3" component="h2">
-                         temp
-                        </Typography>
-                    <Typography variant="h4" component="h2">
-                        
-                            temp
-                        </Typography>
-                    <Typography variant="h5" component="h2">
-                      
-                            temp
-                        </Typography>
-                    <Typography className={classes.pos} color="textSecondary">
-
-                    </Typography>
-                </div> :
+                {(currentTemp === null) ? '' :
                     <div>
                         <Typography variant="h3" component="h2">
                             {currentCity} temp
